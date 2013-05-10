@@ -9,7 +9,6 @@ import xbmcaddon
 import xbmcplugin
 import CommonFunctions
 import os
-import resources.lib.bestofsvt as bestof
 import resources.lib.helper as helper
 import resources.lib.svt as svt
 
