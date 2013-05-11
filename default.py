@@ -165,12 +165,13 @@ def createDirectory(url,page,index,callertype,dirtype):
     while (kolla):
       html = svt.getPage(url)
       visafler = common.parseDOM(html, "a", attrs = { "class": "[^\"']*svtCenterUnknown[^\"']*" }, ret = "href")
+      populateDirNoPaging(url,dirtype,tabname)
+      
       if len(visafler) == 2:
-        populateDirNoPaging(url,dirtype,tabname)
         url = visafler[1]
       else:
         kolla = False
-        populateDirNoPaging(url,dirtype,tabname)        
+        
     return
   else:
     populateDirNoPaging(url,dirtype,tabname)
