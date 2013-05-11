@@ -1,3 +1,6 @@
+Version 0.2.1
+- Shows with "&" are now listed properly.
+
 Version 0.2
 -------------
 - Added pagination
