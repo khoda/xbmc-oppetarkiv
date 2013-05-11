@@ -9,6 +9,9 @@ def getPage(url):
   if not url.startswith("/") and not url.startswith("http://"):
     url = "/" + url
 
+  if "&amp;" in url:
+    url = url.replace("&amp;", "&")
+    
   result = common.fetchPage({ "link": url })
   
   if result["status"] == 200:
