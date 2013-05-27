@@ -18,5 +18,7 @@
     <description lang="sv">Med denna addon kan du strömma innehåll från Öppet Arkiv (oppetarkiv.se).</description>
     <disclaimer>This is an unofficial addon and it is not supported or maintained by SVT. Some parts of this addon may not be legal in your country of residence - please check with your local laws before installing.</disclaimer>
     <platform>all</platform>
+    <website>https://github.com/khoda/xbmc-oppetarkiv</website>
+    <source>https://github.com/khoda/xbmc-oppetarkiv</source>
   </extension>
 </addon>
