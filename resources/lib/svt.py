@@ -185,6 +185,7 @@ def getSearchResult(query, page):
     newarticle["thumbnail"] = thumbnail
     title = common.parseDOM(article, "h2")[0]
     title = common.parseDOM(title, "a")[0]
+    title = common.replaceHTMLCodes(title)
     newarticle["title"] = title
     newarticle["info"] = { "title": title }
     newarticles.append(newarticle)
