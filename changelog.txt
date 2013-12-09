@@ -1,7 +1,3 @@
-Version 0.2.4
--------------
-- Fixed group programs by letter of alphabet
-
 Version 0.2.3
 -------------
 - Added search functionality (linqan)

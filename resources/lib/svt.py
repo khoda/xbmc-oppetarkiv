@@ -50,6 +50,9 @@ def getAtoO():
 
   return programs
 
+
+
+
 def getProgramsByLetter(letter):
   """
   Returns a list of all program starting with the supplied letter.
@@ -57,26 +60,21 @@ def getProgramsByLetter(letter):
   letter = urllib.unquote(letter)
 
   html = getPage(URL_A_TO_O)
-  
-  #check if letter is Ö due to different CSS class *doh*  
-  if letter == "&Ouml;":
-    letterboxes = common.parseDOM(html, "section", attrs = { "class": "svtClearfix svt-padding-top-20px svt-margin-bottom-25px svt-border-top " })
-  else:
-    letterboxes = common.parseDOM(html, "section", attrs = { "class": "svtClearfix svt-padding-top-20px svt-margin-bottom-25px svt-border-top  " })
 
-
+  letterboxes = common.parseDOM(html, "div", attrs = { "class": "[^\"']*playAlphabeticLetter[^\"']*" })
 
   for letterbox in letterboxes:
-    heading = common.parseDOM(letterbox, "a", attrs = { "class": "svt-color-almostblack" })[0]
+
+    heading = common.parseDOM(letterbox, "h3")[0]
+
     if heading == letter:
       break
 
-  lis = common.parseDOM(letterbox, "li")
+  lis = common.parseDOM(letterbox, "li", attrs = { "class": "[^\"']*playListItem[^\"']*" })
 
   programs = []
 
   for li in lis:
-    common.log("li: " + li)
     program = {}
     program["url"] = common.parseDOM(li, "a", ret = "href")[0]
     title = common.parseDOM(li, "a")[0]
@@ -105,28 +103,6 @@ def getAjaxUrl(html,tabname):
   else:
     return None
 
-
-
-
-
-def getAlphas():
-  """
-  Returns a list of all letters in the alphabet that 
-  matches the starting letter of some program.
-  """
-  html = getPage(URL_A_TO_O)
-
-  letters = common.parseDOM(html, "a" , attrs = { "class": "svt-color-almostblack" })
-
-  alphas = []
-
-  for letter in letters:
-    alpha = {}
-    alpha["title"] = helper.convertChar(letter)
-    alpha["char"] =  letter
-    alphas.append(alpha)
-
-  return alphas
 
 
 def getPlayBox(html,tabname):
